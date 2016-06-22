@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wangdaye.com.geometricweather.utils.IntroduceImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container_introduce_image"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:scaleType="centerCrop"
+    tools:src="@drawable/introduction_1"
+    tools:ignore="ContentDescription" />

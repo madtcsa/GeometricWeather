@@ -1,19 +1,16 @@
 <resources>
     <!-- app -->
     <string name="app_name">Geometric Weather</string>
+    <string name="launcher_name">天气</string>
     <string name="package_name">wangdaye.com.geometricweather</string>
 
-    <string name="version_code">版本号\n2.1.9</string>
-    <string name="note">代码注释\n优化：空气质量更易被看到\n优化：优化UI细节\n修复：修复了天气通知的文字偏移bug\n修改：修改了app name</string>
+    <string name="version_code">版本号\n4.0.0</string>
+    <string name="note">代码注释\n代码完全重构\n添加：天气对话框显示全天天气\n优化：更好用的滑动切换\n修改：部分天气动画小幅调整\n修改：UI微调</string>
 
-    <string name="introduce_title_1">Geometric Weather</string>
-    <string name="introduce_title_2">快捷操作</string>
-    <string name="introduce_title_3">手势响应</string>
-    <string name="introduce_title_4">作者提示</string>
-    <string name="introduce_text_1">欢迎您使用 Geometric Weather\n\n请先浏览一下简单的使用说明吧</string>
-    <string name="introduce_text_2">点击地址名和图形按钮可选择地址及收藏地址\n\n点击天气趋势图可切换为一周数据或小时数据</string>
-    <string name="introduce_text_3">左右滑动卡片可进行位置切换\n\n点击天气图标可查看当日信息</string>
-    <string name="introduce_text_4">若app中出现了视图天空无限绘制的情况\n\n请将app加入导航栏变色模组的黑名单中</string>
+    <string name="introduce_text_1">欢迎使用 Geometric Weather\n以下为几项提醒</string>
+    <string name="introduce_text_2">点击卡片中的地名可进入地址管理\n点击卡片中的圆形图标可收藏地址/取消收藏</string>
+    <string name="introduce_text_3">点击天气折线图可切换一周天气/小时天气\n左右滑动可切换城市</string>
+    <string name="introduce_text_4">若出现天空无限绘制的情况\n请将app加入XP导航栏变色框架的黑名单中</string>
 
     <!-- keyword -->
     <string name="local">本地</string>
@@ -28,7 +25,7 @@
     <string name="uv">紫外线</string>
     <string name="dressing_index">穿衣指数</string>
     <string name="cold_index">感冒指数</string>
-    <string name="air_index">污染指数</string>
+    <string name="aqi">污染指数</string>
     <string name="wash_car_index">洗车指数</string>
     <string name="exercise_index">运动指数</string>
     <string name="visibility">能见度</string>
@@ -38,7 +35,7 @@
     <string name="maxi_temp">高温</string>
     <string name="mini_temp">低温</string>
     <string name="temp">温度</string>
-    <string name="pop">降水概率</string>
+    <string name="pops">降水概率</string>
     <string name="yesterday_data">昨日气温</string>
     <string name="time">时间</string>
     <string name="powered_by_juhe">powered by Juhe.cn</string>
@@ -49,9 +46,11 @@
     <string name="manage">地址管理</string>
     <string name="no_data">暂无数据</string>
     <string name="share_info">from Geometric Weather</string>
-    <string name="share_error">分享失败\n请检查网络情况</string>
+    <string name="level">级</string>
+    <string name="use_local_as_example">以默认位置天气为例，以实际所选地址为准</string>
+    <string name="air">空气</string>
 
-    <string name="dialog_title">请选择地址或在这里搜索点什么吧</string>
+    <string name="dialog_title">选择地址或搜索…</string>
     <string name="default_location">默认位置</string>
 
     <string name="lab">实验室</string>
@@ -79,12 +78,13 @@
     <string name="thanks_info_mi">感谢\n小米金米奖及小米应用商店的认领邀请</string>
     <string name="author">作者</string>
     <string name="gitHub">gitHub\ngithub.com/WangDaYeeeeee/GeometricWeather</string>
-    <string name="email">email\nwangdayeeeeee@gmail.com</string>
+    <string name="email">email\nwangdayeeeeee@gmail.com\nyuyidong2015@gmail.com</string>
     <string name="author_message">欢迎向作者反应bug\n欢迎提供更好的免费（或低价）天气api</string>
 
     <!-- week -->
     <string name="yesterday">昨日</string>
     <string name="today">今日</string>
+    <string name="tomorrow">明日</string>
     <string name="week">周</string>
     <string name="week_1">周一</string>
     <string name="week_2">周二</string>
@@ -111,12 +111,13 @@
     <string name="request_competence_succeed">获取权限成功</string>
     <string name="request_competence_failed">获取权限失败</string>
     <string name="get_location_failed">定位失败，请检查权限和网络连接</string>
-    <string name="refresh_data_failed">刷新数据失败</string>
-    <string name="try_set_eng_location">刷新数据失败，若网络无异常，您可以尝试设置通过英文地名获取小时数据</string>
+    <string name="get_weather_data_failed">获取天气数据失败</string>
     <string name="send_notification_error">发送天气通知失败，请检查网络环境</string>
     <string name="refresh_widget_error">刷新小部件失败，请检查网络环境</string>
     <string name="null_widget_id">无效的widget id</string>
     <string name="first_refresh_widget">小部件第一次刷新数据可能会有些慢</string>
+    <string name="share_error">分享失败\n请检查网络情况</string>
+    <string name="touch_to_retry">点击重试</string>
 
     <string name="collect_failed">地址已存在</string>
     <string name="collect_succeed">收藏成功</string>
@@ -145,9 +146,7 @@
     <string name="navigation_bar_color_switch">导航栏着色(5.0+)</string>
     <string name="navigation_bar_color_switch_on">导航栏显示主题颜色</string>
     <string name="navigation_bar_color_switch_off">导航栏显示黑色</string>
-    <string name="get_hourly_data_by_eng">通过英文地名获取小时数据</string>
-    <string name="get_hourly_data_by_eng_summary">部分机型开启可解决无法获取小时数据的问题</string>
-    
+
     <string name="timing_forecast_switch_today">定时预报(今日)</string>
     <string name="set_forecast_time_today">设定预报时间(今日)</string>
     <string name="set_forecast_time_summary_today">建议避免设定在00:00附近</string>
@@ -248,31 +247,12 @@
     <string name="key_hide_refresh_time">show_refresh_time</string>
     <string name="key_black_text">black_text</string>
     <string name="key_isDay">isDay</string>
-    <string name="key_saved_data">saved_data</string>
-    <string name="key_weather_kind_today">weather_kind_today</string>
-    <string name="key_weather_today">weather_today</string>
-    <string name="key_temperature_today">temperature_today</string>
-    <string name="key_city_time">city_time</string>
-    <string name="key_week_2">week_2</string>
-    <string name="key_week_3">week_3</string>
-    <string name="key_week_4">week_4</string>
-    <string name="key_week_5">week_5</string>
-    <string name="key_weather_2">weather_2</string>
-    <string name="key_weather_3">weather_3</string>
-    <string name="key_weather_4">weather_4</string>
-    <string name="key_weather_5">weather_5</string>
-    <string name="key_temperature_2">temperature_2</string>
-    <string name="key_temperature_3">temperature_3</string>
-    <string name="key_temperature_4">temperature_4</string>
-    <string name="key_temperature_5">temperature_5</string>
 
-    <string name="key_watched_introduce">watched_introduce</string>
     <string name="key_shared">shared</string>
     <string name="key_share_uri">share_uri</string>
     <string name="key_introduce_version_code">introduce_version_code</string>
     <string name="key_hide_star">hide_star</string>
     <string name="key_navigation_bar_color_switch">navigation_bar_color_switch</string>
-    <string name="key_get_hourly_data_by_eng">get_hourly_data_by_eng</string>
     <string name="key_timing_forecast_switch_today">timing_forecast_switch_today</string>
     <string name="key_forecast_time_today">forecast_time_today</string>
     <string name="key_forecast_type_today">forecast_type_today</string>

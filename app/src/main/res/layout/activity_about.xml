@@ -5,56 +5,52 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <FrameLayout
+    <ImageView
+        android:id="@+id/activity_about_image"
+        android:scaleType="centerCrop"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:contentDescription="@string/app_name"
+        tools:src="@drawable/design_background" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/activity_about_scrollView"
+        android:scrollbars="none"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/app_info_title"
-            android:scaleType="centerCrop"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/weather_image_main_half"
-            android:contentDescription="@string/app_name"
-            tools:src="@drawable/design_background" />
+            android:layout_height="wrap_content">
 
-        <wangdaye.com.geometricweather.Widget.MyScrollView
-            android:id="@+id/activity_about_scrollView"
-            android:scrollbars="none"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:orientation="vertical"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="256dp"
+                tools:ignore="UselessLeaf" />
 
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/touch_layout_height" />
+            <include layout="@layout/container_about_app" />
+            <include layout="@layout/container_about_tech" />
+            <include layout="@layout/container_about_thx" />
+            <include layout="@layout/container_about_author" />
 
-                <include layout="@layout/about_app_card_app" />
-                <include layout="@layout/about_app_card_tech" />
-                <include layout="@layout/about_app_card_thank" />
-                <include layout="@layout/about_app_card_about_me" />
+        </LinearLayout>
 
-            </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
 
-        </wangdaye.com.geometricweather.Widget.MyScrollView>
+    <wangdaye.com.geometricweather.ui.widget.StatusBarView
+        android:id="@+id/activity_about_statusBar"
+        android:background="@color/design_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
-        <FrameLayout
-            android:id="@+id/activity_about_statusBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/app_info_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fitsSystemWindows="true"
-            android:background="@android:color/transparent"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:theme="@style/AppTheme.AppBarOverlay" />
-
-    </FrameLayout>
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/activity_about_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:background="@android:color/transparent"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        app:theme="@style/AppTheme.AppBarOverlay" />
 
 </android.support.design.widget.CoordinatorLayout>

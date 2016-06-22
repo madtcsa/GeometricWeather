@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container_temperature_hourly"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/trend_view_height">
+
+    <wangdaye.com.geometricweather.ui.widget.weatherView.HourlyView
+        android:id="@+id/container_temperature_hourly_trendView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/trend_view_height" />
+
+    <TextView
+        android:layout_margin="@dimen/card_info_margin"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:text="@string/powered_by_hefeng"
+        android:textSize="@dimen/mini_text_size"
+        style="@style/content_text"
+        tools:ignore="RtlHardcoded" />
+
+    <LinearLayout
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/card_info_margin"
+        tools:ignore="RelativeOverlap,RtlHardcoded">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:src="@drawable/chart_tag_light"
+                android:layout_width="@dimen/mini_text_size"
+                android:layout_height="@dimen/mini_text_size"
+                tools:ignore="ContentDescription" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:text="@string/temp"
+            android:paddingLeft="@dimen/card_margin"
+            android:paddingRight="@dimen/card_margin"
+            android:textSize="@dimen/normal_text_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:src="@drawable/chart_tag_dark"
+                android:layout_width="@dimen/mini_text_size"
+                android:layout_height="@dimen/mini_text_size"
+                tools:ignore="ContentDescription" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:text="@string/pops"
+            android:paddingLeft="@dimen/card_margin"
+            android:textSize="@dimen/normal_text_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="RtlSymmetry" />
+
+    </LinearLayout>
+
+</RelativeLayout>

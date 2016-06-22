@@ -4,11 +4,7 @@
     android:id="@+id/widget_clock_day_center"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clickable="true"
-    android:paddingTop="0dp"
-    android:paddingLeft="0dp"
-    android:paddingRight="0dp"
-    android:paddingBottom="0dp" >
+    tools:background="@color/cardview_dark_background">
 
     <ImageView
         android:id="@+id/widget_clock_day_center_card"
@@ -16,12 +12,10 @@
         tools:ignore="ContentDescription" />
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_centerInParent="true"
-        android:elevation="5dp"
-        android:layout_width="156dp"
-        android:layout_height="wrap_content"
-        tools:targetApi="lollipop">
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -35,107 +29,74 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/normal_title_size">
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/widget_clock_day_center_icon"
+                android:layout_width="@dimen/flag_icon_size"
+                android:layout_height="@dimen/flag_icon_size"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="@dimen/card_margin"
+                android:layout_marginRight="@dimen/card_margin"
+                android:src="@drawable/weather_cloudy"
+                tools:ignore="ContentDescription" />
 
             <TextView
-                android:id="@+id/widget_clock_day_center_date"
-                android:text="@string/wait_refresh"
-                android:textSize="@dimen/mini_word_size"
+                android:id="@+id/widget_clock_day_center_weather"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/widget_clock_day_center_icon"
+                android:text="@string/ellipsis"
                 android:textColor="@color/colorTextLight"
                 android:shadowColor="@color/colorTextGrey"
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="1"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                style="@style/content_text"
+                tools:text="阴\n9℃"
+                tools:ignore="RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/widget_clock_day_center_temp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/widget_clock_day_center_icon"
+                android:text="@string/ellipsis"
+                android:textColor="@color/colorTextLight"
+                android:shadowColor="@color/colorTextGrey"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="1"
+                style="@style/content_text"
+                tools:text="10°\n  3°"
+                tools:ignore="RtlHardcoded" />
 
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="96dp">
+            android:layout_height="wrap_content">
 
-            <RelativeLayout
-                android:layout_width="156dp"
-                android:layout_height="80dp"
-                android:elevation="5dp"
-                android:padding="8dp" >
-
-                <RelativeLayout
-                    android:layout_width="40dp"
-                    android:layout_height="72dp"
-                    android:layout_alignParentLeft="true">
-
-                    <TextView
-                        android:id="@+id/widget_clock_day_center_weather"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:text="@string/ellipsis"
-                        android:textSize="@dimen/normal_word_size"
-                        android:textColor="@color/colorTextLight"
-                        android:shadowColor="@color/colorTextGrey"
-                        android:shadowDx="1"
-                        android:shadowDy="1"
-                        android:shadowRadius="1" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="60dp"
-                    android:layout_height="72dp"
-                    android:layout_centerInParent="true">
-
-                    <ImageView
-                        android:id="@+id/widget_clock_day_center_image"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_centerInParent="true"
-                        android:src="@drawable/weather_cloudy"
-                        tools:ignore="ContentDescription" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="40dp"
-                    android:layout_height="72dp"
-                    android:layout_alignParentRight="true" >
-
-                    <TextView
-                        android:id="@+id/widget_clock_day_center_temp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:text="@string/ellipsis"
-                        android:textSize="@dimen/normal_word_size"
-                        android:textColor="@color/colorTextLight"
-                        android:shadowColor="@color/colorTextGrey"
-                        android:shadowDx="1"
-                        android:shadowDy="1"
-                        android:shadowRadius="1" />
-
-                </RelativeLayout>
-
-            </RelativeLayout>
+            <FrameLayout
+                android:id="@+id/widget_clock_day_center_center"
+                android:layout_centerInParent="true"
+                android:layout_width="40dp"
+                android:layout_height="1dp" />
 
             <TextView
-                android:id="@+id/widget_clock_day_center_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
+                android:id="@+id/widget_clock_day_center_refreshTime"
                 android:text="@string/wait_refresh"
-                android:textSize="10sp"
                 android:textColor="@color/colorTextGrey"
-                android:elevation="5dp"
-                tools:ignore="SmallSp,SpUsage" />
+                android:textSize="@dimen/widget_time_size"
+                android:shadowColor="@color/colorTextGrey"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="1"
+                android:layout_toRightOf="@id/widget_clock_day_center_center"
+                style="@style/content_text"
+                tools:text="青岛.17:00"
+                tools:ignore="RtlHardcoded" />
 
         </RelativeLayout>
-        
+
     </LinearLayout>
 
     <LinearLayout
@@ -144,23 +105,19 @@
         android:layout_height="match_parent">
 
         <ImageButton
-            android:id="@+id/widget_clock_day_center_clock_button"
+            android:id="@+id/widget_clock_day_center_clockButton"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="#00000000"
-            android:elevation="20dp"
-            tools:targetApi="lollipop"
+            android:background="@android:color/transparent"
             tools:ignore="ContentDescription" />
 
         <ImageButton
-            android:id="@+id/widget_clock_day_center_weather_button"
+            android:id="@+id/widget_clock_day_center_weatherButton"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="#00000000"
-            android:elevation="20dp"
-            tools:targetApi="lollipop"
+            android:background="@android:color/transparent"
             tools:ignore="ContentDescription" />
 
     </LinearLayout>

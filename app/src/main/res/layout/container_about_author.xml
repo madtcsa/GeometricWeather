@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/material_card">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:text="@string/author"
+            android:layout_margin="@dimen/card_info_margin"
+            android:textSize="@dimen/normal_title_size"
+            android:textColor="?attr/colorAccent"
+            style="@style/content_text" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/container_about_author_gitHub_icon"
+                android:src="@drawable/ic_github"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                style="@style/material_icon"
+                tools:ignore="ContentDescription,RtlHardcoded" />
+
+            <TextView
+                android:layout_toRightOf="@id/container_about_author_gitHub_icon"
+                android:layout_alignParentTop="true"
+                android:text="@string/gitHub"
+                android:layout_marginTop="@dimen/card_info_margin"
+                android:layout_marginRight="@dimen/card_info_margin"
+                android:layout_marginBottom="@dimen/card_info_margin"
+                style="@style/content_text"
+                tools:ignore="RtlHardcoded" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/container_about_author_email_icon"
+                android:src="@drawable/ic_email"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                style="@style/material_icon"
+                tools:ignore="ContentDescription,RtlHardcoded" />
+
+            <TextView
+                android:layout_toRightOf="@id/container_about_author_email_icon"
+                android:layout_alignParentTop="true"
+                android:text="@string/email"
+                android:layout_marginTop="@dimen/card_info_margin"
+                android:layout_marginRight="@dimen/card_info_margin"
+                android:layout_marginBottom="@dimen/card_info_margin"
+                style="@style/content_text"
+                tools:ignore="RtlHardcoded" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/container_about_author_hear_icon"
+                android:src="@drawable/ic_voice"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                style="@style/material_icon"
+                tools:ignore="ContentDescription,RtlHardcoded" />
+
+            <TextView
+                android:layout_toRightOf="@id/container_about_author_hear_icon"
+                android:layout_alignParentTop="true"
+                android:text="@string/author_message"
+                android:layout_marginTop="@dimen/card_info_margin"
+                android:layout_marginRight="@dimen/card_info_margin"
+                android:layout_marginBottom="@dimen/card_info_margin"
+                style="@style/content_text"
+                tools:ignore="RtlHardcoded" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

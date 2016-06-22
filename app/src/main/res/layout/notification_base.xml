@@ -1,95 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/notification_base"
     android:orientation="horizontal" 
     android:layout_width="match_parent"
-    android:layout_height="64dp" >
+    android:layout_height="match_parent"
+    tools:layout_height="64dp">
 
     <FrameLayout
-        android:id="@+id/notification_background_base"
+        android:id="@+id/notification_base_background"
         android:background="@color/notification_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-    
+
+    <ImageView
+        android:id="@+id/notification_base_icon"
+        android:scaleType="fitCenter"
+        android:layout_width="@dimen/normal_icon_size"
+        android:layout_height="@dimen/normal_icon_size"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/card_info_margin"
+        tools:src="@drawable/weather_cloudy"
+        tools:ignore="ContentDescription,RtlHardcoded" />
+
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/notification_base_icon"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/card_info_margin"
+        tools:ignore="RtlHardcoded">
 
-        <RelativeLayout
-            android:layout_width="72dp"
-            android:layout_height="match_parent"
-            android:paddingLeft="12dp"
-            android:paddingRight="12dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp" >
+        <TextView
+            android:id="@+id/notification_base_title"
+            android:text="@string/wait_refresh"
+            android:textSize="@dimen/normal_title_size"
+            style="@style/large_title_text"
+            tools:text="阴 15℃"
+            tools:textColor="@color/colorTextLight" />
 
-            <ImageView
-                android:id="@+id/notification_base_image_today"
-                android:scaleType="fitCenter"
-                android:src="@drawable/weather_cloudy"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                tools:ignore="ContentDescription" />
-
-        </RelativeLayout>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:padding="1dp" >
-
-                <TextView
-                    android:id="@+id/notification_base_text_title"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/wait_refresh"
-                    android:textAppearance="@style/TextAppearance.StatusBar.EventContent.Info"
-                    android:textSize="@dimen/normal_word_size" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:padding="1dp" >
-
-                <TextView
-                    android:id="@+id/notification_base_text_details"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/ellipsis"
-                    android:textSize="@dimen/normal_word_size"
-                    android:textAppearance="@style/TextAppearance.StatusBar.EventContent.Info" />
-
-                <TextView
-                    android:id="@+id/notification_base_text_remark"
-                    android:padding="8dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/ellipsis"
-                    android:textAppearance="@style/TextAppearance.StatusBar.EventContent.Time"
-                    android:textSize="11sp"
-                    tools:ignore="SmallSp" />
-
-            </RelativeLayout>
-
-        </LinearLayout>
+        <TextView
+            android:id="@+id/notification_base_content"
+            android:text="@string/ellipsis"
+            android:textSize="@dimen/normal_text_size"
+            style="@style/large_title_text"
+            tools:text="10/15°"
+            tools:textColor="@color/colorTextLight2nd" />
 
     </LinearLayout>
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/notification_base_time"
+        android:layout_margin="@dimen/card_margin"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ellipsis"
+        android:textSize="@dimen/widget_time_size"
+        android:textColor="@color/colorTextGrey"
+        tools:text="青岛.10:00"
+        tools:ignore="RtlHardcoded,SmallSp" />
+
+</RelativeLayout>

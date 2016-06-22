@@ -1,4 +1,4 @@
-package wangdaye.com.geometricweather.Receiver;
+package wangdaye.com.geometricweather.receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -9,19 +9,16 @@ import android.preference.PreferenceManager;
 import java.util.Calendar;
 
 import wangdaye.com.geometricweather.R;
-import wangdaye.com.geometricweather.Service.NotificationService;
-import wangdaye.com.geometricweather.Service.TimeService;
-import wangdaye.com.geometricweather.Service.TodayForecastService;
-import wangdaye.com.geometricweather.Service.TomorrowForecastService;
+import wangdaye.com.geometricweather.service.notification.NotificationService;
+import wangdaye.com.geometricweather.service.notification.TimeService;
+import wangdaye.com.geometricweather.service.notification.TodayForecastService;
+import wangdaye.com.geometricweather.service.notification.TomorrowForecastService;
 
 /**
  * My receiver.
  * */
 
 public class MyReceiver extends BroadcastReceiver {
-
-    // TAG
-//    private final String TAG = "MyReceiver";
 
     @Override
     public void onReceive(Context context, Intent intent) {

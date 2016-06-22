@@ -4,12 +4,13 @@
     package="wangdaye.com.geometricweather" >
 
     <application
+        android:name=".application.GeometricWeather"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="@string/launcher_name"
         android:supportsRtl="true"
         android:largeHeap="true"
-        android:theme="@style/AppTheme"
+        android:theme="@style/GeometricWeather"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
         <!-- Baidu location service -->
@@ -22,9 +23,9 @@
 
         <!-- activity -->
         <activity
-            android:name=".View.MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/GeometricWeather"
             android:configChanges="orientation|screenSize"
             tools:ignore="InnerclassSeparator">
 
@@ -40,29 +41,23 @@
         </activity>
 
         <activity
-            android:name=".View.SettingsActivity"
+            android:name=".ui.activity.SettingsActivity"
             android:label="@string/settings"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/GeometricWeather"
             android:configChanges="orientation|screenSize"
-            android:parentActivityName=".View.MainActivity"
             tools:ignore="InnerclassSeparator" />
 
         <activity
-            android:name=".View.AboutAppActivity"
+            android:name=".ui.activity.AboutActivity"
             android:label="@string/about"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"
-            tools:ignore="InnerclassSeparator" />
-
-        <activity android:name=".View.IntroduceActivity"
-            android:label="@string/introduce"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"
+            android:theme="@style/GeometricWeather"
+            android:configChanges="orientation|screenSize"
             tools:ignore="InnerclassSeparator" />
 
         <!-- create widget activity -->
         <activity
-            android:name=".View.CreateWidgetDayActivity"
+            android:name=".ui.activity.widget.CreateWidgetDayActivity"
+            android:theme="@style/GeometricWeather"
             android:screenOrientation="portrait"
             tools:ignore="InnerclassSeparator">
 
@@ -73,7 +68,8 @@
         </activity>
 
         <activity
-            android:name=".View.CreateWidgetWeekActivity"
+            android:name=".ui.activity.widget.CreateWidgetWeekActivity"
+            android:theme="@style/GeometricWeather"
             android:screenOrientation="portrait"
             tools:ignore="InnerclassSeparator">
 
@@ -84,7 +80,8 @@
         </activity>
 
         <activity
-            android:name=".View.CreateWidgetDayWeekActivity"
+            android:name=".ui.activity.widget.CreateWidgetDayWeekActivity"
+            android:theme="@style/GeometricWeather"
             android:screenOrientation="portrait"
             tools:ignore="InnerclassSeparator">
             <intent-filter>
@@ -94,7 +91,8 @@
         </activity>
 
         <activity
-            android:name=".View.CreateWidgetClockDayActivity"
+            android:name=".ui.activity.widget.CreateWidgetClockDayActivity"
+            android:theme="@style/GeometricWeather"
             android:screenOrientation="portrait"
             tools:ignore="InnerclassSeparator">
             <intent-filter>
@@ -104,7 +102,8 @@
         </activity>
 
         <activity
-            android:name=".View.CreateWidgetClockDayCenterActivity"
+            android:name=".ui.activity.widget.CreateWidgetClockDayCenterActivity"
+            android:theme="@style/GeometricWeather"
             android:screenOrientation="portrait"
             tools:ignore="InnerclassSeparator">
             <intent-filter>
@@ -114,7 +113,8 @@
         </activity>
 
         <activity
-            android:name=".View.CreateWidgetClockDayWeekActivity"
+            android:name=".ui.activity.widget.CreateWidgetClockDayWeekActivity"
+            android:theme="@style/GeometricWeather"
             android:screenOrientation="portrait"
             tools:ignore="InnerclassSeparator">
             <intent-filter>
@@ -124,36 +124,36 @@
         </activity>
 
         <!-- notification service -->
-        <service android:name=".Service.NotificationService"
+        <service android:name=".service.notification.NotificationService"
             tools:ignore="InnerclassSeparator" />
 
         <!-- widget service -->
-        <service android:name=".Service.RefreshWidgetDay"
+        <service android:name=".service.widget.WidgetDayService"
             tools:ignore="InnerclassSeparator" />
-        <service android:name=".Service.RefreshWidgetWeek"
+        <service android:name=".service.widget.WidgetWeekService"
             tools:ignore="InnerclassSeparator" />
-        <service android:name=".Service.RefreshWidgetDayWeek"
+        <service android:name=".service.widget.WidgetDayWeekService"
             tools:ignore="InnerclassSeparator" />
-        <service android:name=".Service.RefreshWidgetClockDay"
+        <service android:name=".service.widget.WidgetClockDayService"
             tools:ignore="InnerclassSeparator" />
-        <service android:name=".Service.RefreshWidgetClockDayCenter"
+        <service android:name=".service.widget.WidgetClockDayCenterService"
             tools:ignore="InnerclassSeparator" />
-        <service android:name=".Service.RefreshWidgetClockDayWeek"
+        <service android:name=".service.widget.WidgetClockDayWeekService"
             tools:ignore="InnerclassSeparator" />
 
-        <service android:name=".Service.TimeService"
+        <service android:name=".service.notification.TimeService"
             tools:ignore="InnerclassSeparator" />
-        <service android:name=".Service.TodayForecastService"
+        <service android:name=".service.notification.TodayForecastService"
             tools:ignore="InnerclassSeparator" />
-        <service android:name=".Service.TomorrowForecastService"
+        <service android:name=".service.notification.TomorrowForecastService"
             tools:ignore="InnerclassSeparator" />
 
         <!-- receiver -->
-        <receiver android:name=".Receiver.NotificationReceiver"
+        <receiver android:name=".receiver.NotificationReceiver"
             tools:ignore="InnerclassSeparator" />
 
         <receiver
-            android:name=".Receiver.MyReceiver"
+            android:name=".receiver.MyReceiver"
             tools:ignore="InnerclassSeparator">
 
             <intent-filter>
@@ -165,7 +165,7 @@
 
         <!-- widget -->
         <receiver
-            android:name=".Receiver.WidgetProviderDay"
+            android:name=".receiver.widget.WidgetDayProvider"
             android:label="@string/widget_day"
             tools:ignore="InnerclassSeparator">
 
@@ -181,7 +181,7 @@
         </receiver>
 
         <receiver
-            android:name=".Receiver.WidgetProviderWeek"
+            android:name=".receiver.widget.WidgetWeekProvider"
             android:label="@string/widget_week"
             tools:ignore="InnerclassSeparator">
 
@@ -197,7 +197,7 @@
         </receiver>
 
         <receiver
-            android:name=".Receiver.WidgetProviderDayWeek"
+            android:name=".receiver.widget.WidgetDayWeekProvider"
             android:label="@string/widget_day_week"
             tools:ignore="InnerclassSeparator">
 
@@ -213,7 +213,7 @@
         </receiver>
 
         <receiver
-            android:name=".Receiver.WidgetProviderClockDay"
+            android:name=".receiver.widget.WidgetClockDayProvider"
             android:label="@string/widget_clock_day"
             tools:ignore="InnerclassSeparator">
 
@@ -229,7 +229,7 @@
         </receiver>
 
         <receiver
-            android:name=".Receiver.WidgetProviderClockDayCenter"
+            android:name=".receiver.widget.WidgetClockDayCenterProvider"
             android:label="@string/widget_clock_day_center"
             tools:ignore="InnerclassSeparator">
 
@@ -245,7 +245,7 @@
         </receiver>
 
         <receiver
-            android:name=".Receiver.WidgetProviderClockDayWeek"
+            android:name=".receiver.widget.WidgetClockDayWeekProvider"
             android:label="@string/widget_clock_day_week"
             tools:ignore="InnerclassSeparator">
 

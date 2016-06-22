@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
@@ -12,7 +13,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dialog_title_height">
+        android:layout_height="?attr/actionBarSize">
 
         <Button
             android:id="@+id/dialog_time_setter_done"
@@ -20,7 +21,8 @@
             android:text="@string/done"
             android:textColor="@color/colorAccent"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true" />
+            android:layout_centerVertical="true"
+            tools:ignore="RtlHardcoded" />
 
         <Button
             android:id="@+id/dialog_time_setter_cancel"
@@ -28,7 +30,8 @@
             android:text="@string/cancel"
             android:textColor="@color/colorTextDark2nd"
             android:layout_toLeftOf="@id/dialog_time_setter_done"
-            android:layout_centerVertical="true" />
+            android:layout_centerVertical="true"
+            tools:ignore="RtlHardcoded" />
 
     </RelativeLayout>
 

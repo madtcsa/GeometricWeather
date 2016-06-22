@@ -4,103 +4,96 @@
     android:id="@+id/widget_day"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:clickable="true" >
+    tools:background="@color/cardview_dark_background">
 
     <ImageView
         android:id="@+id/widget_day_card"
         style="@style/widget_background_card"
         tools:ignore="ContentDescription" />
 
-    <RelativeLayout
-        android:layout_width="156dp"
-        android:layout_height="96dp"
-        android:elevation="5dp"
-        android:paddingBottom="8dp"
+    <LinearLayout
         android:layout_centerInParent="true"
-        tools:targetApi="lollipop">
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <RelativeLayout
-            android:layout_width="156dp"
-            android:layout_height="80dp"
-            android:elevation="5dp"
-            android:padding="8dp" >
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <RelativeLayout
-                android:layout_width="40dp"
-                android:layout_height="72dp"
-                android:layout_alignParentLeft="true">
+            <ImageView
+                android:id="@+id/widget_day_icon"
+                android:layout_width="@dimen/flag_icon_size"
+                android:layout_height="@dimen/flag_icon_size"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="@dimen/card_margin"
+                android:layout_marginRight="@dimen/card_margin"
+                android:src="@drawable/weather_cloudy"
+                tools:ignore="ContentDescription" />
 
-                <TextView
-                    android:id="@+id/widget_day_weather"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
-                    android:text="@string/ellipsis"
-                    android:textSize="@dimen/normal_word_size"
-                    android:textColor="@color/colorTextLight"
-                    android:shadowColor="@color/colorTextGrey"
-                    android:shadowDx="1"
-                    android:shadowDy="1"
-                    android:shadowRadius="1" />
+            <TextView
+                android:id="@+id/widget_day_weather"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/widget_day_icon"
+                android:text="@string/ellipsis"
+                android:textColor="@color/colorTextLight"
+                android:shadowColor="@color/colorTextGrey"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="1"
+                style="@style/content_text"
+                tools:text="阴\n9℃"
+                tools:ignore="RtlHardcoded" />
 
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="60dp"
-                android:layout_height="72dp"
-                android:layout_centerInParent="true">
-
-                <ImageView
-                    android:id="@+id/widget_day_image"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_centerInParent="true"
-                    android:src="@drawable/weather_cloudy"
-                    tools:ignore="ContentDescription" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="40dp"
-                android:layout_height="72dp"
-                android:layout_alignParentRight="true" >
-
-                <TextView
-                    android:id="@+id/widget_day_temp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:text="@string/ellipsis"
-                    android:textSize="@dimen/normal_word_size"
-                    android:textColor="@color/colorTextLight"
-                    android:shadowColor="@color/colorTextGrey"
-                    android:shadowDx="1"
-                    android:shadowDy="1"
-                    android:shadowRadius="1" />
-
-            </RelativeLayout>
+            <TextView
+                android:id="@+id/widget_day_temp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/widget_day_icon"
+                android:text="@string/ellipsis"
+                android:textColor="@color/colorTextLight"
+                android:shadowColor="@color/colorTextGrey"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="1"
+                style="@style/content_text"
+                tools:text="10°\n  3°"
+                tools:ignore="RtlHardcoded" />
 
         </RelativeLayout>
 
-        <TextView
-            android:id="@+id/widget_day_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:text="@string/wait_refresh"
-            android:textSize="@dimen/widget_time_size"
-            android:textColor="@color/colorTextGrey"
-            android:elevation="5dp" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    </RelativeLayout>
+            <FrameLayout
+                android:id="@+id/widget_day_center"
+                android:layout_centerInParent="true"
+                android:layout_width="40dp"
+                android:layout_height="1dp" />
+
+            <TextView
+                android:id="@+id/widget_day_refreshTime"
+                android:text="@string/wait_refresh"
+                android:textColor="@color/colorTextGrey"
+                android:textSize="@dimen/widget_time_size"
+                android:shadowColor="@color/colorTextGrey"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="1"
+                android:layout_toRightOf="@id/widget_day_center"
+                style="@style/content_text"
+                tools:text="青岛.17:00"
+                tools:ignore="RtlHardcoded" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
 
     <ImageButton
         android:id="@+id/widget_day_button"
-        style="@style/widget_button"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
         tools:ignore="ContentDescription" />
 
 </RelativeLayout>
