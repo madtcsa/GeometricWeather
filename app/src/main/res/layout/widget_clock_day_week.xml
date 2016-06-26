@@ -30,7 +30,9 @@
 
                 <TextClock
                     android:id="@+id/widget_clock_day_week_clock"
-                    style="@style/widget_text_clock" />
+                    android:textSize="@dimen/compact_icon_size"
+                    style="@style/widget_text_clock"
+                    tools:ignore="SpUsage" />
 
             </RelativeLayout>
 
@@ -41,8 +43,8 @@
 
                 <ImageView
                     android:id="@+id/widget_clock_day_week_icon"
-                    android:layout_width="@dimen/flag_icon_size"
-                    android:layout_height="@dimen/flag_icon_size"
+                    android:layout_width="@dimen/compact_icon_size"
+                    android:layout_height="@dimen/compact_icon_size"
                     android:layout_centerInParent="true"
                     android:layout_marginLeft="@dimen/card_margin"
                     android:layout_marginRight="@dimen/card_margin"
@@ -93,7 +95,7 @@
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_marginTop="@dimen/card_margin"
+            android:layout_marginTop="4dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:ignore="DisableBaselineAlignment">

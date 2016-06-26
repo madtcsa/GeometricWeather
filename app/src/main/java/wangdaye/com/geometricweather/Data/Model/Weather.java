@@ -245,9 +245,9 @@ public class Weather {
             weatherKindDays[i] = JuheWeather.getWeatherKind(result.heWeather.get(position).daily_forecast.get(i).cond.code_d);
             weatherKindNights[i] = HefengWeather.getWeatherKind(result.heWeather.get(position).daily_forecast.get(i).cond.code_n);
             windDirDays[i] = windDirNights[i] = result.heWeather.get(position).daily_forecast.get(i).wind.dir;
-            windLevelDays[i] = windLevelNights[i] = result.heWeather.get(position).daily_forecast.get(0).wind.sc + context.getString(R.string.level);
-            maxiTemps[i] = result.heWeather.get(position).daily_forecast.get(0).tmp.max;
-            miniTemps[i] = result.heWeather.get(position).daily_forecast.get(0).tmp.min;
+            windLevelDays[i] = windLevelNights[i] = result.heWeather.get(position).daily_forecast.get(i).wind.sc + context.getString(R.string.level);
+            maxiTemps[i] = result.heWeather.get(position).daily_forecast.get(i).tmp.max;
+            miniTemps[i] = result.heWeather.get(position).daily_forecast.get(i).tmp.min;
         }
 
         return new Weather(

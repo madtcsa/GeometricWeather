@@ -12,7 +12,8 @@
     <dimen name="large_icon_size">80dp</dimen>
     <dimen name="flag_icon_size">56dp</dimen>
     <dimen name="normal_icon_size">48dp</dimen>
-    <dimen name="mini_icon_size">40dp</dimen>
+    <dimen name="compact_icon_size">42dp</dimen>
+    <dimen name="mini_icon_size">36dp</dimen>
     <dimen name="material_icon_size">24dp</dimen>
     <dimen name="weather_icon_margin">20dp</dimen>
 

@@ -16,6 +16,9 @@ public class HourlyWeather {
     }
 
     public static HourlyWeather buildHourlyWeather(HefengResult result) {
+        if (result == null || result.heWeather.size() == 0 || !result.heWeather.get(0).status.equals("ok")) {
+            return null;
+        }
         int position = HefengWeather.getLatestDataPosition(result);
         int[] temps = new int[result.heWeather.get(position).hourly_forecast.size()];
         for (int i = 0; i < temps.length; i ++) {

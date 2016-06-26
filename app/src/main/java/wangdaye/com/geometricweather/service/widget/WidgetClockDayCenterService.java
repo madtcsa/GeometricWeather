@@ -1,5 +1,6 @@
 package wangdaye.com.geometricweather.service.widget;
 
+import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.appwidget.AppWidgetManager;
@@ -8,11 +9,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.IBinder;
+import android.os.SystemClock;
 import android.provider.AlarmClock;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.RemoteViews;
+
+import com.baidu.location.LocationClient;
 
 import wangdaye.com.geometricweather.data.database.MyDatabaseHelper;
 import wangdaye.com.geometricweather.data.database.WeatherTable;
@@ -33,6 +37,9 @@ import wangdaye.com.geometricweather.utils.WidgetAndNotificationUtils;
 
 public class WidgetClockDayCenterService extends Service
         implements LocationUtils.OnRequestLocationListener, WeatherUtils.OnRequestWeatherListener {
+    // widget
+    private LocationClient client;
+
     // data
     private int startId;
     private Location location;
@@ -47,6 +54,7 @@ public class WidgetClockDayCenterService extends Service
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        this.client = new LocationClient(this);
         this.startId = startId;
 
         SharedPreferences sharedPreferences = this.getSharedPreferences(
@@ -57,12 +65,19 @@ public class WidgetClockDayCenterService extends Service
                         getString(R.string.local)));
 
         if (location.location.equals(getString(R.string.local))) {
-            LocationUtils.requestLocation(this, this);
+            LocationUtils.requestLocation(client, this);
         } else {
             WeatherUtils.requestWeather(this, location, location.location, true, this);
         }
 
+        this.setAlarmIntent();
         return START_NOT_STICKY;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        client.stop();
     }
 
     /** <br> widget. */
@@ -133,6 +148,24 @@ public class WidgetClockDayCenterService extends Service
         appWidgetManager.updateAppWidget(
                 new ComponentName(context, WidgetClockDayCenterProvider.class),
                 views);
+    }
+
+    /** <br> data. */
+
+    private void setAlarmIntent() {
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent target = new Intent(getBaseContext(), WidgetClockDayCenterService.class);
+        PendingIntent pendingIntent = PendingIntent.getService(
+                getBaseContext(),
+                0,
+                target,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+
+        int duration = 1000 * 60 * 60 * WidgetAndNotificationUtils.getWidgetRefreshHours(this);
+        alarmManager.set(
+                AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                SystemClock.elapsedRealtime() + duration,
+                pendingIntent);
     }
 
     /** <br> interface. */

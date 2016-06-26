@@ -152,6 +152,11 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void guideUser() {
+        introduceVersionNow = INTRODUCE_VERSION_CODE;
+        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
+        editor.putInt(getString(R.string.key_introduce_version_code), INTRODUCE_VERSION_CODE);
+        editor.apply();
+
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             IntroduceDialog introduceDialog = new IntroduceDialog();
             introduceDialog.show(getFragmentManager(), null);
@@ -192,9 +197,6 @@ public class MainActivity extends AppCompatActivity
         super.onRequestPermissionsResult(requestCode, permission, grantResult);
         switch (requestCode) {
             case LOCATION_PERMISSIONS_REQUEST_CODE:
-                SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
-                editor.putInt(getString(R.string.key_introduce_version_code), INTRODUCE_VERSION_CODE);
-                editor.apply();
                 new Timer().schedule(new TimerTask() {
                     @Override
                     public void run() {

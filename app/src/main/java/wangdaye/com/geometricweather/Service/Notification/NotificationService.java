@@ -11,6 +11,8 @@ import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 
+import com.baidu.location.LocationClient;
+
 import wangdaye.com.geometricweather.data.database.LocationTable;
 import wangdaye.com.geometricweather.data.model.Location;
 import wangdaye.com.geometricweather.data.database.MyDatabaseHelper;
@@ -26,6 +28,9 @@ import wangdaye.com.geometricweather.utils.WidgetAndNotificationUtils;
 
 public class NotificationService extends Service
         implements LocationUtils.OnRequestLocationListener, WeatherUtils.OnRequestWeatherListener {
+    // widget
+    private LocationClient client;
+
     // data
     private int startId;
     private Location location;
@@ -62,14 +67,22 @@ public class NotificationService extends Service
         }
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        client.stop();
+    }
+
     /** <br> notification. */
 
     private void requestData() {
+        client = new LocationClient(this);
+
         location = LocationTable.readLocationList(
                 this,
                 MyDatabaseHelper.getDatabaseHelper(this)).get(0);
         if(location.location.equals(getString(R.string.local))) {
-            LocationUtils.requestLocation(this, this);
+            LocationUtils.requestLocation(client, this);
         } else {
             WeatherUtils.requestWeather(this, location, location.location, true, this);
         }

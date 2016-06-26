@@ -19,6 +19,8 @@ import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.baidu.location.LocationClient;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +50,8 @@ public class CreateWidgetClockDayActivity extends Activity
     private TextView widgetDate;
     private TextView widgetWeather;
 
+    private LocationClient client;
+
     // data
     private Location location;
     private List<String> nameList;
@@ -71,11 +75,18 @@ public class CreateWidgetClockDayActivity extends Activity
         this.initData();
         this.initWidget();
 
+        this.client = new LocationClient(this);
         if (location.location.equals(getString(R.string.local))) {
-            LocationUtils.requestLocation(this, this);
+            LocationUtils.requestLocation(client, this);
         } else {
             WeatherUtils.requestWeather(this, location, location.location, true, this);
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        client.stop();
     }
 
     /** <br> UI. */

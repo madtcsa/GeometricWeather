@@ -17,8 +17,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.baidu.location.LocationClient;
+
 import wangdaye.com.geometricweather.R;
-import wangdaye.com.geometricweather.application.GeometricWeather;
 import wangdaye.com.geometricweather.data.database.HistoryTable;
 import wangdaye.com.geometricweather.data.database.MyDatabaseHelper;
 import wangdaye.com.geometricweather.data.database.WeatherTable;
@@ -67,6 +68,8 @@ public class WeatherFragment extends Fragment
     private TextView lifeInfoTitle;
     private LifeInfoView lifeInfoView;
 
+    private LocationClient client;
+
     // data
     public Location location;
     public boolean isCollected;
@@ -81,6 +84,12 @@ public class WeatherFragment extends Fragment
     /** <br> life cycle. */
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        this.client = new LocationClient(getActivity());
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_weather, container, false);
 
@@ -89,6 +98,12 @@ public class WeatherFragment extends Fragment
         this.reset();
 
         return view;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        client.stop();
     }
 
     /** <br> UI. */
@@ -296,7 +311,7 @@ public class WeatherFragment extends Fragment
     public void onRefresh() {
         TimeUtils.getInstance(getActivity()).getDayTime(getActivity(), true);
         if (location.location.equals(getString(R.string.local))) {
-            LocationUtils.requestLocation(GeometricWeather.getInstance(), this);
+            LocationUtils.requestLocation(client, this);
         } else {
             WeatherUtils.requestWeather(getActivity(), location, location.location, true, this);
         }

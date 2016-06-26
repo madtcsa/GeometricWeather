@@ -1,7 +1,5 @@
 package wangdaye.com.geometricweather.data.api;
 
-import android.content.Context;
-
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
@@ -12,8 +10,7 @@ import com.baidu.location.LocationClientOption;
 
 public class BaiduLocation {
 
-    public static void requestLocation(Context context, BDLocationListener l){
-        LocationClient client = new LocationClient(context);
+    public static void requestLocation(LocationClient client, BDLocationListener l){
         client.registerLocationListener(l);
         LocationClientOption option = new LocationClientOption();
         option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);//可选，默认高精度，设置定位模式，高精度，低功耗，仅设备

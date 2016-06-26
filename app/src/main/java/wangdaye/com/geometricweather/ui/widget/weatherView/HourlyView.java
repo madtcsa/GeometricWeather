@@ -162,7 +162,7 @@ public class HourlyView extends View {
             paint.setColor(ContextCompat.getColor(getContext(), R.color.chart_number));
             paint.setAlpha(100);
             canvas.drawText(
-                    hours[hours.length - 1 - (coordinates.length - i)],
+                    hours[hours.length - (coordinates.length - i)],
                     coordinates[i] - MARGIN_TEXT,
                     getMeasuredHeight() - MARGIN_BOTTOM - paint.getFontMetrics().bottom,
                     paint);

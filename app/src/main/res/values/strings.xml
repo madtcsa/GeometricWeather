@@ -4,8 +4,8 @@
     <string name="launcher_name">天气</string>
     <string name="package_name">wangdaye.com.geometricweather</string>
 
-    <string name="version_code">版本号\n4.0.0</string>
-    <string name="note">代码注释\n代码完全重构\n添加：天气对话框显示全天天气\n优化：更好用的滑动切换\n修改：部分天气动画小幅调整\n修改：UI微调</string>
+    <string name="version_code">版本号\n4.0.3</string>
+    <string name="note">代码注释\n优化：优化了按钮的点击反馈\n修复：修复了重复弹出介绍提示框的bug\n修复：修复了4×2小部件显示不全的bug</string>
 
     <string name="introduce_text_1">欢迎使用 Geometric Weather\n以下为几项提醒</string>
     <string name="introduce_text_2">点击卡片中的地名可进入地址管理\n点击卡片中的圆形图标可收藏地址/取消收藏</string>

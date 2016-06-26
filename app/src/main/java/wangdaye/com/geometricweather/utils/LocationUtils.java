@@ -5,6 +5,7 @@ import android.widget.Toast;
 
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
 
 import wangdaye.com.geometricweather.R;
 import wangdaye.com.geometricweather.data.api.BaiduLocation;
@@ -15,8 +16,8 @@ import wangdaye.com.geometricweather.data.api.BaiduLocation;
 
 public class LocationUtils {
 
-    public static void requestLocation(Context context, OnRequestLocationListener l) {
-        BaiduLocation.requestLocation(context, new SimpleBDLocationListener(l));
+    public static void requestLocation(LocationClient client, OnRequestLocationListener l) {
+        BaiduLocation.requestLocation(client, new SimpleBDLocationListener(l));
     }
 
     public static void simpleLocationFailedFeedback(Context context) {

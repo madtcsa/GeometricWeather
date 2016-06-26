@@ -37,15 +37,8 @@ public class HefengWeather {
     public static HefengResult getWeather(String location, boolean isDaily) {
         BufferedReader reader;
         String result;
-        String requestCode;
+        String requestCode = httpUrl + "?" + httpArg + buildRequestLocation(location);
         StringBuilder sbf = new StringBuilder();
-
-        if (!Location.isEngLocation(location)) {
-            requestCode = httpUrl + "?" + httpArg + charToPinyin(location).replaceAll(" ", "");
-        } else {
-            requestCode = httpUrl + "?" + httpArg + location;
-        }
-
         HefengResult hefengResult = null;
         try {
             URL url = new URL(requestCode);
@@ -176,8 +169,8 @@ public class HefengWeather {
     }
 
     public static int getLatestDataPosition(HefengResult result) {
-        if (result == null) {
-            return 0;
+        if (result == null || result.heWeather.size() == 0 || !result.heWeather.get(0).status.equals("ok")) {
+                return 0;
         }
         int position = 0;
         String updateTime = result.heWeather.get(0).basic.update.loc;
@@ -188,5 +181,31 @@ public class HefengWeather {
             }
         }
         return position;
+    }
+
+    private static String buildRequestLocation(String location) {
+        if (Location.isEngLocation(location)) {
+            while (true) {
+                if (location.charAt(0) == ' ') {
+                    location = location.replaceFirst(" ", "");
+                } else {
+                    break;
+                }
+            }
+
+            for (int i = 1; i < location.length() - 1; i ++) {
+                if (location.charAt(i) == ' ' &&
+                        (location.charAt(i - 1) == ' ' || location.charAt(i + 1) == ' ')) {
+                    location = location.replaceFirst(" ", "");
+                    i --;
+                } else if (location.charAt(i) == ' ' && location.charAt(i - 1) != ' ' && location.charAt(i + 1) != ' ') {
+                    location = location.replaceFirst(" ", "+");
+                }
+            }
+
+            return location.replaceAll(" ", "");
+        } else {
+            return charToPinyin(location.replace(" ", "")).replaceAll(" ", "");
+        }
     }
 }

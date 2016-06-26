@@ -73,6 +73,7 @@
                     tools:ignore="RtlHardcoded"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="@dimen/card_info_margin"
+                    android:layout_alignParentRight="true"
                     android:layout_toRightOf="@+id/activity_create_widget_clock_day_chooseLocationTitle" />
 
             </RelativeLayout>

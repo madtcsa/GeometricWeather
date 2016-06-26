@@ -48,7 +48,7 @@ public class DisplayUtils {
         boolean navigationBarColorSwitch = sharedPreferences.getBoolean(
                 context.getString(R.string.key_navigation_bar_color_switch),
                 false);
-        if(navigationBarColorSwitch && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (navigationBarColorSwitch && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             if (isDay) {
                 window.setNavigationBarColor(ContextCompat.getColor(context, R.color.lightPrimary_3));
             } else {
