@@ -17,7 +17,6 @@ import wangdaye.com.geometricweather.data.database.LocationTable;
 import wangdaye.com.geometricweather.data.model.Location;
 import wangdaye.com.geometricweather.data.database.MyDatabaseHelper;
 import wangdaye.com.geometricweather.R;
-import wangdaye.com.geometricweather.receiver.NotificationReceiver;
 import wangdaye.com.geometricweather.utils.LocationUtils;
 import wangdaye.com.geometricweather.utils.WeatherUtils;
 import wangdaye.com.geometricweather.utils.WidgetAndNotificationUtils;
@@ -34,6 +33,7 @@ public class NotificationService extends Service
     // data
     private int startId;
     private Location location;
+    private static final int REQUEST_CODE = 7;
 
     /** <br> life cycle. */
 
@@ -53,18 +53,11 @@ public class NotificationService extends Service
 
         if(notificationSwitchOn && autoRefresh) {
             this.requestData();
-
-            long triggerAtTime = SystemClock.elapsedRealtime()
-                            + 1000 * 60 * 60 * WidgetAndNotificationUtils.getNotificationRefreshHours(this);
-            Intent intentAlarm = new Intent(NotificationService.this, NotificationReceiver.class);
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intentAlarm, 0);
-            AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-            alarmManager.set(AlarmManager.ELAPSED_REALTIME, triggerAtTime, pendingIntent);
-            return START_NOT_STICKY;
+            this.setAlarmIntent();
         } else {
             this.stopSelf(startId);
-            return START_NOT_STICKY;
         }
+        return START_NOT_STICKY;
     }
 
     @Override
@@ -86,6 +79,24 @@ public class NotificationService extends Service
         } else {
             WeatherUtils.requestWeather(this, location, location.location, true, this);
         }
+    }
+
+    /** <br> alarm mission. */
+
+    private void setAlarmIntent() {
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent target = new Intent(getBaseContext(), NotificationService.class);
+        PendingIntent pendingIntent = PendingIntent.getService(
+                getBaseContext(),
+                REQUEST_CODE,
+                target,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+
+        int duration = 1000 * 60 * 60 * WidgetAndNotificationUtils.getNotificationRefreshHours(this);
+        alarmManager.set(
+                AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                SystemClock.elapsedRealtime() + duration,
+                pendingIntent);
     }
 
     /** <br> listener. */

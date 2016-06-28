@@ -28,21 +28,18 @@ public class MyReceiver extends BroadcastReceiver {
             case "android.intent.action.BOOT_COMPLETED":
                 // power on the phone
                 if (sharedPreferences.getBoolean(context.getString(R.string.key_notification_switch), false)) {
-                    Intent intentNotification = new Intent(context, NotificationService.class);
-                    context.startService(intentNotification);
+                    Intent notificationService = new Intent(context, NotificationService.class);
+                    context.startService(notificationService);
                 }
 
                 if (sharedPreferences.getBoolean(context.getString(R.string.key_timing_forecast_switch_today), false)
                         || sharedPreferences.getBoolean(context.getString(R.string.key_timing_forecast_switch_tomorrow), false)) {
-                    Intent intentTimeService = new Intent(context, TimeService.class);
-                    context.startService(intentTimeService);
+                    Intent timerService = new Intent(context, TimeService.class);
+                    context.startService(timerService);
                 }
                 break;
 
             case Intent.ACTION_TIME_TICK:
-                this.sendForecast(context, sharedPreferences);
-                break;
-
             case Intent.ACTION_TIME_CHANGED:
                 this.sendForecast(context, sharedPreferences);
                 break;

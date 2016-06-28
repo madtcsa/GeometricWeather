@@ -229,7 +229,7 @@ public class WeatherFragment extends Fragment
             return;
         }
 
-        DisplayUtils.setWindowTopColor(getActivity());
+        DisplayUtils.setWindowTopColor(getActivity(), getString(R.string.geometric_weather));
         ((MainActivity) getActivity()).initStatusBarColor();
         ((MainActivity) getActivity()).initNavHeaderBackground();
 
@@ -311,6 +311,8 @@ public class WeatherFragment extends Fragment
     public void onRefresh() {
         TimeUtils.getInstance(getActivity()).getDayTime(getActivity(), true);
         if (location.location.equals(getString(R.string.local))) {
+            client.stop();
+            client = new LocationClient(getActivity());
             LocationUtils.requestLocation(client, this);
         } else {
             WeatherUtils.requestWeather(getActivity(), location, location.location, true, this);
@@ -329,6 +331,11 @@ public class WeatherFragment extends Fragment
             alpha = 1;
         }
         toolbar.setAlpha(alpha);
+        if (alpha == 0 && toolbar.getVisibility() == View.VISIBLE) {
+            toolbar.setVisibility(View.GONE);
+        } else if (alpha != 0 && toolbar.getVisibility() == View.GONE) {
+            toolbar.setVisibility(View.VISIBLE);
+        }
     }
 
     // on swipe listener(swipe switch layout).

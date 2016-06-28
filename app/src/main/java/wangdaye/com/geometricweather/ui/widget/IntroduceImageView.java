@@ -1,4 +1,4 @@
-package wangdaye.com.geometricweather.utils;
+package wangdaye.com.geometricweather.ui.widget;
 
 import android.annotation.TargetApi;
 import android.content.Context;

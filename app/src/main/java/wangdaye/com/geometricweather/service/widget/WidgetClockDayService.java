@@ -42,6 +42,7 @@ public class WidgetClockDayService extends Service
     // data
     private int startId;
     private Location location;
+    private static final int REQUEST_CODE = 2;
 
     /** <br> life cycle. */
 
@@ -63,13 +64,19 @@ public class WidgetClockDayService extends Service
                         getString(R.string.key_location),
                         getString(R.string.local)));
 
-        if (location.location.equals(getString(R.string.local))) {
-            LocationUtils.requestLocation(client, this);
+        int[] widgetIds = AppWidgetManager.getInstance(this)
+                .getAppWidgetIds(new ComponentName(this, WidgetClockDayProvider.class));
+        if (widgetIds != null && widgetIds.length != 0) {
+            if (location.location.equals(getString(R.string.local))) {
+                LocationUtils.requestLocation(client, this);
+            } else {
+                WeatherUtils.requestWeather(this, location, location.location, true, this);
+            }
+            this.setAlarmIntent();
         } else {
-            WeatherUtils.requestWeather(this, location, location.location, true, this);
+            stopSelf();
         }
 
-        this.setAlarmIntent();
         return START_NOT_STICKY;
     }
 
@@ -152,7 +159,7 @@ public class WidgetClockDayService extends Service
         Intent target = new Intent(getBaseContext(), WidgetClockDayService.class);
         PendingIntent pendingIntent = PendingIntent.getService(
                 getBaseContext(),
-                0,
+                REQUEST_CODE,
                 target,
                 PendingIntent.FLAG_UPDATE_CURRENT);
 

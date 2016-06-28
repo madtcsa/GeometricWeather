@@ -121,6 +121,13 @@ public class WidgetAndNotificationUtils {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
 
+        // set notification level.
+        if (sharedPreferences.getBoolean(context.getString(R.string.key_hide_notification_icon), false)) {
+            builder.setPriority(NotificationCompat.PRIORITY_MIN);
+        } else {
+            builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        }
+
         // set notification visibility.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             if (sharedPreferences.getBoolean(context.getString(R.string.key_hide_notification_in_lockScreen), false)) {
@@ -270,9 +277,12 @@ public class WidgetAndNotificationUtils {
             big.setViewVisibility(R.id.notification_base_background, View.GONE);
             big.setViewVisibility(R.id.notification_big_background, View.GONE);
         }
-        // loading big view
+
+        // set big view.
+        builder.setCustomBigContentView(big);
+
+        // get notification.
         Notification notification = builder.build();
-        notification.bigContentView = big;
 
         // sound and shock
         if (isService) {
@@ -334,6 +344,13 @@ public class WidgetAndNotificationUtils {
         // get manager & builder.
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
+
+        // set notification level.
+        if (sharedPreferences.getBoolean(context.getString(R.string.key_hide_notification_icon), false)) {
+            builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        } else {
+            builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        }
 
         // set notification visibility.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

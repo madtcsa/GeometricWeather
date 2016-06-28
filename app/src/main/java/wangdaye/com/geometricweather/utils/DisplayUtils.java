@@ -61,13 +61,14 @@ public class DisplayUtils {
         }
     }
 
-    public static void setWindowTopColor(Activity activity) {
+    public static void setWindowTopColor(Activity activity, String topText) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             boolean isDay = TimeUtils.getInstance(activity).isDay;
 
             ActivityManager.TaskDescription taskDescription;
             Bitmap topIcon = BitmapFactory.decodeResource(activity.getResources(), R.drawable.ic_launcher);
-            taskDescription = new ActivityManager.TaskDescription(activity.getString(R.string.app_name),
+            taskDescription = new ActivityManager.TaskDescription(
+                    topText,
                     topIcon,
                     ContextCompat.getColor(activity, isDay ? R.color.lightPrimary_5 : R.color.darkPrimary_5));
             activity.setTaskDescription(taskDescription);

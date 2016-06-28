@@ -1,11 +1,11 @@
 <resources>
     <!-- app -->
-    <string name="app_name">Geometric Weather</string>
-    <string name="launcher_name">天气</string>
+    <string name="app_name">天气</string>
+    <string name="geometric_weather">Geometric Weather</string>
     <string name="package_name">wangdaye.com.geometricweather</string>
 
-    <string name="version_code">版本号\n4.0.3</string>
-    <string name="note">代码注释\n优化：优化了按钮的点击反馈\n修复：修复了重复弹出介绍提示框的bug\n修复：修复了4×2小部件显示不全的bug</string>
+    <string name="version_code">版本号\n4.0.5</string>
+    <string name="note">代码注释\n添加：添加了隐藏通知图标的选项\n修复：修复了无法手动刷新的bug\n</string>
 
     <string name="introduce_text_1">欢迎使用 Geometric Weather\n以下为几项提醒</string>
     <string name="introduce_text_2">点击卡片中的地名可进入地址管理\n点击卡片中的圆形图标可收藏地址/取消收藏</string>
@@ -206,6 +206,9 @@
     <string name="notification_can_clear_switch">天气通知可被清除</string>
     <string name="notification_can_clear_on">天气通知可被清除</string>
     <string name="notification_can_clear_off">天气通知常驻通知栏</string>
+    <string name="hide_notification_icon">隐藏通知图标</string>
+    <string name="hide_notification_icon_summary_on">将隐藏状态栏上的天气图标</string>
+    <string name="hide_notification_icon_summary_off">将在状态栏上显示图标</string>
     <string name="hide_notification_in_lockScreen">隐藏锁屏通知(5.0+)</string>
     <string name="hide_notification_in_lockScreen_summary_on">在锁屏界面隐藏通知</string>
     <string name="hide_notification_in_lockScreen_summary_off">在锁屏界面显示通知</string>
@@ -265,6 +268,7 @@
     <string name="key_notification_background_color_switch">notification_background_color_switch</string>
     <string name="key_notification_auto_refresh_switch">notification_auto_refresh_switch</string>
     <string name="key_notification_can_clear_switch">notification_can_clear_switch</string>
+    <string name="key_hide_notification_icon">hide_notification_icon</string>
     <string name="key_hide_notification_in_lockScreen">hide_notification_in_lockScreen</string>
     <string name="key_notification_time">notification_time</string>
     <string name="key_notification_sound_switch">notification_sound_switch</string>

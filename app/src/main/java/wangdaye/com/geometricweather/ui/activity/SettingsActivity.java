@@ -22,7 +22,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        DisplayUtils.setWindowTopColor(this);
+        DisplayUtils.setWindowTopColor(this, getString(R.string.settings));
         DisplayUtils.setStatusBarTranslate(getWindow());
         DisplayUtils.setNavigationBarColor(this, getWindow(), true);
         this.setContentView(R.layout.activity_settings);

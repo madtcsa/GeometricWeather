@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/card_info_margin"
-        android:text="@string/app_name"
+        android:text="@string/geometric_weather"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         tools:ignore="RtlHardcoded" />
 

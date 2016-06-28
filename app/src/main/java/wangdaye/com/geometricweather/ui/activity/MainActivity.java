@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         this.initData();
         this.handler = new SafeHandler<>(this);
-        DisplayUtils.setWindowTopColor(this);
+        DisplayUtils.setWindowTopColor(this, getString(R.string.geometric_weather));
         DisplayUtils.setNavigationBarColor(this, getWindow(), TimeUtils.getInstance(this).isDay);
         DisplayUtils.setStatusBarTranslate(getWindow());
         setContentView(R.layout.activity_main);

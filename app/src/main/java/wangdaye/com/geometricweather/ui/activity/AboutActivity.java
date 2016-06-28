@@ -34,7 +34,7 @@ public class AboutActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        DisplayUtils.setWindowTopColor(this);
+        DisplayUtils.setWindowTopColor(this, getString(R.string.about));
         DisplayUtils.setStatusBarTranslate(getWindow());
         DisplayUtils.setNavigationBarColor(this, getWindow(), true);
         setContentView(R.layout.activity_about);

@@ -29,6 +29,7 @@ public class TodayForecastService extends Service
     // data
     private int startId;
     private Location location;
+    //private final int REQUEST_CODE = 9;
 
     /** <br> life cycle. */
 

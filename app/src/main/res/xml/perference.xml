@@ -110,6 +110,12 @@
             android:summaryOff="@string/notification_can_clear_off" />
 
         <CheckBoxPreference
+            android:key="@string/key_hide_notification_icon"
+            android:title="@string/hide_notification_icon"
+            android:summaryOn="@string/hide_notification_icon_summary_on"
+            android:summaryOff="@string/hide_notification_icon_summary_off" />
+
+        <CheckBoxPreference
             android:key="@string/key_hide_notification_in_lockScreen"
             android:title="@string/hide_notification_in_lockScreen"
             android:summaryOn="@string/hide_notification_in_lockScreen_summary_on"

@@ -14,7 +14,6 @@ import wangdaye.com.geometricweather.receiver.MyReceiver;
 public class TimeService extends Service {
     // widget
     private MyReceiver receiver;
-    private IntentFilter intentFilter;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -24,15 +23,25 @@ public class TimeService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        intentFilter = new IntentFilter();
+        IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(Intent.ACTION_TIME_TICK);
         intentFilter.addAction(Intent.ACTION_TIME_CHANGED);
-        receiver = new MyReceiver();
-        registerReceiver(receiver, intentFilter);
+        if (this.receiver == null) {
+            this.receiver = new MyReceiver();
+            registerReceiver(receiver, intentFilter);
+        }
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         return Service.START_STICKY;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (this.receiver != null) {
+            unregisterReceiver(receiver);
+        }
     }
 }

@@ -20,7 +20,7 @@ import wangdaye.com.geometricweather.R;
  * Time setter dialog.
  * */
 
-public class TimeSetterDialog extends DialogFragment implements View.OnClickListener {
+public class TimeSetterDialog extends DialogFragment implements View.OnClickListener, TimePicker.OnTimeChangedListener {
     // widget
     private OnTimeChangedListener listener;
 
@@ -59,30 +59,14 @@ public class TimeSetterDialog extends DialogFragment implements View.OnClickList
 
     private void initWidget(View view) {
         Button done = (Button) view.findViewById(R.id.dialog_time_setter_done);
-        done.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+        done.setOnClickListener(this);
 
         Button cancel = (Button) view.findViewById(R.id.dialog_time_setter_cancel);
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-            }
-        });
+        cancel.setOnClickListener(this);
 
-        TimePicker timeSetter = (TimePicker) view.findViewById(R.id.dialog_time_setter_time_picker);
-        timeSetter.setIs24HourView(true);
-        timeSetter.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
-            @Override
-            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-                TimeSetterDialog.this.hour = hourOfDay;
-                TimeSetterDialog.this.minute = minute;
-            }
-        });
+        TimePicker timePicker = (TimePicker) view.findViewById(R.id.dialog_time_setter_time_picker);
+        timePicker.setIs24HourView(true);
+        timePicker.setOnTimeChangedListener(this);
     }
 
     /** <br> interface. */
@@ -94,6 +78,16 @@ public class TimeSetterDialog extends DialogFragment implements View.OnClickList
     public void setOnTimeChangedListener(OnTimeChangedListener l) {
         this.listener = l;
     }
+
+    // on time changed listener.
+
+    @Override
+    public void onTimeChanged(TimePicker timePicker, int i, int i1) {
+        this.hour = i;
+        this.minute = i1;
+    }
+
+    // on click.
 
     @Override
     public void onClick(View v) {

@@ -95,6 +95,7 @@ public class SettingsFragment extends PreferenceFragment
         ListPreference notificationTextColor = (ListPreference) findPreference(getString(R.string.key_notification_text_color));
         CheckBoxPreference notificationBackground = (CheckBoxPreference) findPreference(getString(R.string.key_notification_background_color_switch));
         CheckBoxPreference notificationClearFlag = (CheckBoxPreference) findPreference(getString(R.string.key_notification_can_clear_switch));
+        CheckBoxPreference notificationIconBehavior = (CheckBoxPreference) findPreference(getString(R.string.key_hide_notification_icon));
         CheckBoxPreference notificationHideBehavior = (CheckBoxPreference) findPreference(getString(R.string.key_hide_notification_in_lockScreen));
         CheckBoxPreference notificationAutoRefresh = (CheckBoxPreference) findPreference(getString(R.string.key_notification_auto_refresh_switch));
         ListPreference notificationRefreshTime = (ListPreference) findPreference(getString(R.string.key_notification_time));
@@ -106,6 +107,7 @@ public class SettingsFragment extends PreferenceFragment
             notificationTextColor.setEnabled(true);
             notificationBackground.setEnabled(true);
             notificationClearFlag.setEnabled(true);
+            notificationIconBehavior.setEnabled(true);
             notificationHideBehavior.setEnabled(true);
             notificationAutoRefresh.setEnabled(true);
             if(sharedPreferences.getBoolean(getString(R.string.key_notification_auto_refresh_switch), false)) {
@@ -123,6 +125,7 @@ public class SettingsFragment extends PreferenceFragment
             notificationTextColor.setEnabled(false);
             notificationBackground.setEnabled(false);
             notificationClearFlag.setEnabled(false);
+            notificationIconBehavior.setEnabled(false);
             notificationHideBehavior.setEnabled(false);
             notificationAutoRefresh.setEnabled(false);
             notificationRefreshTime.setEnabled(false);
