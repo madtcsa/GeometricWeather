@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
@@ -78,7 +77,6 @@ public class MainActivity extends AppCompatActivity
 
     private final int INTRODUCE_DIALOG = 0;
     private final int SETTINGS_ACTIVITY = 1;
-    public final int SHARE_ACTIVITY = 2;
 
     /** <br> life cycle. */
 
@@ -140,13 +138,6 @@ public class MainActivity extends AppCompatActivity
             case SETTINGS_ACTIVITY:
                 DisplayUtils.setNavigationBarColor(this, getWindow(), TimeUtils.getInstance(this).isDay);
                 sendNotification();
-                break;
-            case SHARE_ACTIVITY:
-                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-                String oldUri = sharedPreferences.getString(getString(R.string.key_share_uri), "null");
-                if (! oldUri.equals("null")) {
-                    ShareUtils.deleteSharePicture(this, Uri.parse(oldUri));
-                }
                 break;
         }
     }

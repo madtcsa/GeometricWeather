@@ -132,4 +132,3 @@ class CircleImageView extends ImageView {
         }
     }
 }
-

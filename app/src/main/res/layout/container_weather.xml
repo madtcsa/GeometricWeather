@@ -93,7 +93,7 @@
             <wangdaye.com.geometricweather.ui.widget.weatherView.WeekWeatherView
                 android:id="@+id/container_weather_weekWeatherView"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/week_view_height" />
+                android:layout_height="wrap_content" />
 
             <FrameLayout
                 android:layout_width="match_parent"

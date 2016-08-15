@@ -69,8 +69,8 @@ public class DailyView extends View {
         paint.setAntiAlias(true);
         paint.setStrokeCap(Paint.Cap.ROUND);
 
-        this.maxiTemps = new int[] {7, 7, 7, 7, 7, 7, 7};
-        this.miniTemps = new int[] {0, 0, 0, 0, 0, 0, 0};
+        this.maxiTemps = new int[] {7, 7, 7, 7, 7};
+        this.miniTemps = new int[] {0, 0, 0, 0, 0};
         this.yesterdayTemps = null;
 
         MARGIN_TOP = DisplayUtils.dpToPx(getContext(), (int) MARGIN_TOP);
@@ -87,7 +87,7 @@ public class DailyView extends View {
     /** <br> data. */
 
     public void setData(int[] maxiTemps, int[] miniTemps, int[] yesterdayTemps) {
-        if (maxiTemps == null || miniTemps == null || maxiTemps.length != miniTemps.length || maxiTemps.length != 7
+        if (maxiTemps == null || miniTemps == null || maxiTemps.length != miniTemps.length || maxiTemps.length != 5
                 || (yesterdayTemps != null && yesterdayTemps.length != 2)) {
             return;
         }

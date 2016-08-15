@@ -62,6 +62,8 @@ public class Weather {
     public String washCarContent;
     public String exerciseTitle;
     public String exerciseContent;
+    
+    public static final int WEATHER_DAYS = 5;
 
     /** <br> life cycle. */
 
@@ -127,18 +129,18 @@ public class Weather {
             return null;
         }
 
-        String[] weeks = new String[7];
-        String[] weatherDays = new String[7];
-        String[] weatherNights = new String[7];
-        String[] weatherKindDays = new String[7];
-        String[] weatherKindNights = new String[7];
-        String[] windDirDays = new String[7];
-        String[] windDirNights = new String[7];
-        String[] windLevelDays = new String[7];
-        String[] windLevelNights = new String[7];
-        String[] maxiTemps = new String[7];
-        String[] miniTemps = new String[7];
-        for (int i = 0; i < 7; i ++) {
+        String[] weeks = new String[WEATHER_DAYS];
+        String[] weatherDays = new String[WEATHER_DAYS];
+        String[] weatherNights = new String[WEATHER_DAYS];
+        String[] weatherKindDays = new String[WEATHER_DAYS];
+        String[] weatherKindNights = new String[WEATHER_DAYS];
+        String[] windDirDays = new String[WEATHER_DAYS];
+        String[] windDirNights = new String[WEATHER_DAYS];
+        String[] windLevelDays = new String[WEATHER_DAYS];
+        String[] windLevelNights = new String[WEATHER_DAYS];
+        String[] maxiTemps = new String[WEATHER_DAYS];
+        String[] miniTemps = new String[WEATHER_DAYS];
+        for (int i = 0; i < WEATHER_DAYS; i ++) {
             weeks[i] = context.getString(R.string.week) + result.result.data.weather.get(i).week;
             weatherDays[i] = result.result.data.weather.get(i).info.day.get(1);
             weatherNights[i] = result.result.data.weather.get(i).info.night.get(1);
@@ -207,7 +209,7 @@ public class Weather {
             e.printStackTrace();
         }
         String week = String.valueOf(calendar.get(Calendar.DAY_OF_WEEK));
-        String[] weeks = new String[7];
+        String[] weeks = new String[WEATHER_DAYS];
         int day = Integer.parseInt(week);
         for (int i = 0; i < weeks.length; i ++) {
             if (day == 1){
@@ -229,17 +231,17 @@ public class Weather {
             day ++;
         }
 
-        String[] weatherDays = new String[7];
-        String[] weatherNights = new String[7];
-        String[] weatherKindDays = new String[7];
-        String[] weatherKindNights = new String[7];
-        String[] windDirDays = new String[7];
-        String[] windDirNights = new String[7];
-        String[] windLevelDays = new String[7];
-        String[] windLevelNights = new String[7];
-        String[] maxiTemps = new String[7];
-        String[] miniTemps = new String[7];
-        for (int i = 0; i < 7; i ++) {
+        String[] weatherDays = new String[WEATHER_DAYS];
+        String[] weatherNights = new String[WEATHER_DAYS];
+        String[] weatherKindDays = new String[WEATHER_DAYS];
+        String[] weatherKindNights = new String[WEATHER_DAYS];
+        String[] windDirDays = new String[WEATHER_DAYS];
+        String[] windDirNights = new String[WEATHER_DAYS];
+        String[] windLevelDays = new String[WEATHER_DAYS];
+        String[] windLevelNights = new String[WEATHER_DAYS];
+        String[] maxiTemps = new String[WEATHER_DAYS];
+        String[] miniTemps = new String[WEATHER_DAYS];
+        for (int i = 0; i < WEATHER_DAYS; i ++) {
             weatherDays[i] = result.heWeather.get(position).daily_forecast.get(i).cond.txt_d;
             weatherDays[i] = result.heWeather.get(position).daily_forecast.get(i).cond.txt_n;
             weatherKindDays[i] = JuheWeather.getWeatherKind(result.heWeather.get(position).daily_forecast.get(i).cond.code_d);

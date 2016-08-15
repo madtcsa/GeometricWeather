@@ -1,21 +1,14 @@
 package wangdaye.com.geometricweather.service.widget;
 
-import android.app.AlarmManager;
 import android.app.PendingIntent;
-import android.app.Service;
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.IBinder;
-import android.os.SystemClock;
-import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.RemoteViews;
-
-import com.baidu.location.LocationClient;
 
 import java.util.Calendar;
 
@@ -23,6 +16,7 @@ import wangdaye.com.geometricweather.data.database.MyDatabaseHelper;
 import wangdaye.com.geometricweather.data.database.WeatherTable;
 import wangdaye.com.geometricweather.data.model.Location;
 import wangdaye.com.geometricweather.data.model.Weather;
+import wangdaye.com.geometricweather.service.RecursionService;
 import wangdaye.com.geometricweather.ui.activity.MainActivity;
 import wangdaye.com.geometricweather.R;
 import wangdaye.com.geometricweather.receiver.widget.WidgetWeekProvider;
@@ -35,56 +29,34 @@ import wangdaye.com.geometricweather.utils.WidgetAndNotificationUtils;
  * Widget week service.
  * */
 
-public class WidgetWeekService extends Service
+public class WidgetWeekService extends RecursionService
         implements LocationUtils.OnRequestLocationListener, WeatherUtils.OnRequestWeatherListener {
-    // widget
-    private LocationClient client;
-
     // data
-    private int startId;
-    private Location location;
     private static final int REQUEST_CODE = 6;
 
     /** <br> life cycle. */
 
-    @Nullable
     @Override
-    public IBinder onBind(Intent intent) {
-        return null;
+    public void readSettings() {
+        SharedPreferences sharedPreferences = this.getSharedPreferences(
+                getString(R.string.sp_widget_week_setting), Context.MODE_PRIVATE);
+        setLocation(
+                new Location(
+                        sharedPreferences.getString(
+                                getString(R.string.key_location),
+                                getString(R.string.local))));
     }
 
     @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        this.client = new LocationClient(this);
-        this.startId = startId;
-
-        SharedPreferences sharedPreferences = this.getSharedPreferences(
-                getString(R.string.sp_widget_week_setting), Context.MODE_PRIVATE);
-        this.location = new Location(
-                sharedPreferences.getString(
-                        getString(R.string.key_location),
-                        getString(R.string.local)));
-
+    public void doRefresh() {
         int[] widgetIds = AppWidgetManager.getInstance(this)
                 .getAppWidgetIds(new ComponentName(this, WidgetWeekProvider.class));
         if (widgetIds != null && widgetIds.length != 0) {
-            if (location.location.equals(getString(R.string.local))) {
-                LocationUtils.requestLocation(client, this);
-            } else {
-                WeatherUtils.requestWeather(this, location, location.location, true, this);
-            }
-            this.setAlarmIntent();
+            requestData(this, this);
+            setAlarmIntent(getClass(), REQUEST_CODE, true);
         } else {
-            stopSelf();
+            stopSelf(getStartId());
         }
-
-        return START_NOT_STICKY;
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        client.stop();
     }
 
     /** <br> widget. */
@@ -215,31 +187,13 @@ public class WidgetWeekService extends Service
                 views);
     }
 
-    /** <br> data. */
-
-    private void setAlarmIntent() {
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Intent target = new Intent(getBaseContext(), WidgetWeekService.class);
-        PendingIntent pendingIntent = PendingIntent.getService(
-                getBaseContext(),
-                REQUEST_CODE,
-                target,
-                PendingIntent.FLAG_UPDATE_CURRENT);
-
-        int duration = 1000 * 60 * 60 * WidgetAndNotificationUtils.getWidgetRefreshHours(this);
-        alarmManager.set(
-                AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                SystemClock.elapsedRealtime() + duration,
-                pendingIntent);
-    }
-
     /** <br> interface. */
 
     // request location.
 
     @Override
     public void requestLocationSuccess(String locationName) {
-        WeatherUtils.requestWeather(this, location, locationName, true, this);
+        WeatherUtils.requestWeather(this, getLocation(), locationName, true, this);
     }
 
     @Override
@@ -248,8 +202,8 @@ public class WidgetWeekService extends Service
         refreshWidgetView(this,
                 WeatherTable.readWeather(
                         MyDatabaseHelper.getDatabaseHelper(this),
-                        location.location));
-        this.stopSelf(startId);
+                        getLocation().location));
+        this.stopSelf(getStartId());
     }
 
     // request weather.
@@ -257,7 +211,7 @@ public class WidgetWeekService extends Service
     @Override
     public void requestWeatherSuccess(Location result, boolean isDaily) {
         refreshWidgetView(this, result.weather);
-        this.stopSelf(startId);
+        this.stopSelf(getStartId());
     }
 
     @Override
@@ -266,7 +220,7 @@ public class WidgetWeekService extends Service
         refreshWidgetView(this,
                 WeatherTable.readWeather(
                         MyDatabaseHelper.getDatabaseHelper(this),
-                        location.location));
-        this.stopSelf(startId);
+                        getLocation().location));
+        this.stopSelf(getStartId());
     }
 }

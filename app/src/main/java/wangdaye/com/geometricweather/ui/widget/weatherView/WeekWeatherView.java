@@ -26,8 +26,6 @@ import wangdaye.com.geometricweather.utils.WeatherUtils;
  * */
 
 public class WeekWeatherView extends FrameLayout implements View.OnClickListener {
-    // widget
-    private RelativeLayout[] weekContainers;
     private TextView[] weekTexts;
     private ImageView[] weekIcons;
 
@@ -62,14 +60,12 @@ public class WeekWeatherView extends FrameLayout implements View.OnClickListener
         addView(view);
         this.setOnClickListener(this);
 
-        this.weekContainers = new RelativeLayout[] {
+        RelativeLayout[] weekContainers = new RelativeLayout[]{
                 (RelativeLayout) findViewById(R.id.container_week_weather_week_info_1),
                 (RelativeLayout) findViewById(R.id.container_week_weather_week_info_2),
                 (RelativeLayout) findViewById(R.id.container_week_weather_week_info_3),
                 (RelativeLayout) findViewById(R.id.container_week_weather_week_info_4),
-                (RelativeLayout) findViewById(R.id.container_week_weather_week_info_5),
-                (RelativeLayout) findViewById(R.id.container_week_weather_week_info_6),
-                (RelativeLayout) findViewById(R.id.container_week_weather_week_info_7)};
+                (RelativeLayout) findViewById(R.id.container_week_weather_week_info_5),};
         for (RelativeLayout c : weekContainers) {
             c.setOnClickListener(this);
         }
@@ -78,17 +74,13 @@ public class WeekWeatherView extends FrameLayout implements View.OnClickListener
                 (TextView) findViewById(R.id.container_week_weather_week_text_2),
                 (TextView) findViewById(R.id.container_week_weather_week_text_3),
                 (TextView) findViewById(R.id.container_week_weather_week_text_4),
-                (TextView) findViewById(R.id.container_week_weather_week_text_5),
-                (TextView) findViewById(R.id.container_week_weather_week_text_6),
-                (TextView) findViewById(R.id.container_week_weather_week_text_7)};
+                (TextView) findViewById(R.id.container_week_weather_week_text_5),};
         this.weekIcons = new ImageView[] {
                 (ImageView) findViewById(R.id.container_week_weather_icon_1),
                 (ImageView) findViewById(R.id.container_week_weather_icon_2),
                 (ImageView) findViewById(R.id.container_week_weather_icon_3),
                 (ImageView) findViewById(R.id.container_week_weather_icon_4),
-                (ImageView) findViewById(R.id.container_week_weather_icon_5),
-                (ImageView) findViewById(R.id.container_week_weather_icon_6),
-                (ImageView) findViewById(R.id.container_week_weather_icon_7)};
+                (ImageView) findViewById(R.id.container_week_weather_icon_5),};
     }
 
     /** <br> data. */
@@ -119,7 +111,7 @@ public class WeekWeatherView extends FrameLayout implements View.OnClickListener
             secondWeekDay = weather.weeks[1];
         }
 
-        for (int i = 0; i < 7; i ++) {
+        for (int i = 0; i < 5; i ++) {
             if (i == 0) {
                 weekTexts[i].setText(firstWeekDay);
             } else if (i == 1) {
@@ -167,14 +159,6 @@ public class WeekWeatherView extends FrameLayout implements View.OnClickListener
 
             case R.id.container_week_weather_week_info_5:
                 position = 4;
-                break;
-
-            case R.id.container_week_weather_week_info_6:
-                position = 5;
-                break;
-
-            case R.id.container_week_weather_week_info_7:
-                position = 6;
                 break;
         }
         if (listener != null) {
