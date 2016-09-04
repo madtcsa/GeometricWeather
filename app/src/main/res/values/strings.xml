@@ -4,7 +4,7 @@
     <string name="geometric_weather">Geometric Weather</string>
     <string name="package_name">wangdaye.com.geometricweather</string>
 
-    <string name="version_code">版本号\n4.1.0</string>
+    <string name="version_code">版本号\n4.1.1</string>
     <string name="note">代码注释\n修复：修复了由于api变更导致的fc问题\n修改：每周天气由7天改为5天\n说明：由于聚合数据那边的接口变动，导致出现了fc的现象，一周预览数据也从7天变成了5天。</string>
 
     <string name="introduce_text_1">欢迎使用 Geometric Weather\n以下为几项提醒</string>

@@ -141,17 +141,18 @@ public class Weather {
         String[] maxiTemps = new String[WEATHER_DAYS];
         String[] miniTemps = new String[WEATHER_DAYS];
         for (int i = 0; i < WEATHER_DAYS; i ++) {
-            weeks[i] = context.getString(R.string.week) + result.result.data.weather.get(i).week;
-            weatherDays[i] = result.result.data.weather.get(i).info.day.get(1);
-            weatherNights[i] = result.result.data.weather.get(i).info.night.get(1);
-            weatherKindDays[i] = JuheWeather.getWeatherKind(weatherDays[i]);
-            weatherKindNights[i] = JuheWeather.getWeatherKind(weatherNights[i]);
-            windDirDays[i] = result.result.data.weather.get(i).info.day.get(3);
-            windDirNights[i] = result.result.data.weather.get(i).info.night.get(3);
-            windLevelDays[i] = result.result.data.weather.get(i).info.day.get(4);
-            windLevelNights[i] = result.result.data.weather.get(i).info.night.get(4);
-            maxiTemps[i] = result.result.data.weather.get(i).info.day.get(2);
-            miniTemps[i] = result.result.data.weather.get(i).info.night.get(2);
+            int j = i >= result.result.data.weather.size() ? result.result.data.weather.size() - 1 : i;
+            weeks[i] = context.getString(R.string.week) + result.result.data.weather.get(j).week;
+            weatherDays[i] = result.result.data.weather.get(j).info.day.get(1);
+            weatherNights[i] = result.result.data.weather.get(j).info.night.get(1);
+            weatherKindDays[i] = JuheWeather.getWeatherKind(weatherDays[j]);
+            weatherKindNights[i] = JuheWeather.getWeatherKind(weatherNights[j]);
+            windDirDays[i] = result.result.data.weather.get(j).info.day.get(3);
+            windDirNights[i] = result.result.data.weather.get(j).info.night.get(3);
+            windLevelDays[i] = result.result.data.weather.get(j).info.day.get(4);
+            windLevelNights[i] = result.result.data.weather.get(j).info.night.get(4);
+            maxiTemps[i] = result.result.data.weather.get(j).info.day.get(2);
+            miniTemps[i] = result.result.data.weather.get(j).info.night.get(2);
         }
 
         return new Weather(
